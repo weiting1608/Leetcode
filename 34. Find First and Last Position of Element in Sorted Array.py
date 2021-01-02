@@ -13,7 +13,7 @@ class Solution:
                 break
             
         return [start, end]
-        
+
         # Approach 2: binary search time complexity O(logn)
         start, end = 0, len(nums)-1
         while start <= end:
@@ -22,6 +22,8 @@ class Solution:
                 start = mid + 1
             elif nums[mid] > target:
                 end = mid - 1
+            # Under normal situation, the target value has been found out.
+            # But here there are multiple target values, so checking the start and end is needed.
             else:
                 start = mid
                 while start >= 0 and nums[start] == target: 
