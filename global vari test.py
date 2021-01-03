@@ -1,17 +1,17 @@
 class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        low, high = 0, len(s)-1
+        while low < high:
+            if s[low] == s[high]:
+                low += 1
+                high -= 1
+            else:
+                return self.isValid(s, low+1, high) or self.isValid(s, low, high-1)
+        return True
     
-    def strStr(self, haystack: str, needle: str) -> int:
-        if len(needle) == 0: return 0
-        if len(haystack) == 0 or len(haystack) < len(needle): return -1
-            
-        for h in range(len(haystack)-len(needle)+1):
-            for n in range(len(needle)):
-                if haystack[h+n] != needle[n]: break
-            else: return h
-        
-        return -1
-                
-        
-   
+    def isValid(self, s, start, end):
+        if s[start] != s[end]: return False
+        return True
+
 sol = Solution()
-print(sol.strStr("hello","ll"))
+print(sol.validPalindrome("eeccccbebaeeabebccceea"))   
