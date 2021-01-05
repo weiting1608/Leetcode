@@ -1,6 +1,6 @@
 class Solution:
     def countAndSay(self, n: int) -> str:
-        # initializa an array with n zero.
+        # initializa an array contains n times of zero.
         memo = [0 for _ in range(n+1)]
         memo[1] = "1"
         for i in range(2, n+1):

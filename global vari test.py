@@ -9,12 +9,12 @@ class Solution:
     def say(self, s):
         i = j = 0
         res = ""
-        while j < len(s):
+        while j <= len(s):
             if s[i] != s[j]:
                 res += str(j-i) + s[i]
                 i = j
             j += 1
-        res += str(j-i) + s[i]
+        # res += str(j-i) + s[i]
         return res
         
 sol = Solution()
