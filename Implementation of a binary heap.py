@@ -43,6 +43,9 @@ class MaxHeap:
     def print_heap(self):
         print(self.heap)
 
+    # it is more complicated than insertion, 'cause when heapify down,
+    # in the case of swap, you need to compare first which child is larger,
+    # and you only swap with the larger child.
     def delete_root(self):
         if len(self.heap) == 0: return -1
         last_index = len(self.heap)-1

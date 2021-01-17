@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def flipEquiv(self, root1: TreeNode, root2: TreeNode) -> bool:
         if not root1 and not root2: return True
