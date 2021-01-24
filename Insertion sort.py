@@ -1,17 +1,19 @@
-def insertion_sort(arr):
-    # for every index in array
-    for i in range(1, len(arr)):
-        # set current values and position
-        currentValue = arr[i]
-        position = i
+def insertionSort(arr):
+    # fits well for nearly sorted array
+
+    # for every new ele, actually start from the 2nd ele. range(1,len(arr))
+    for pos, currentVal in enumerate(arr):
+
+        # end when the appropriate position for the currentVal is found, therefore while instead of "for"
+        while pos > 0 and arr[pos-1] > currentVal:
+            # make room for the currentVal, move the large value one space behind
+            arr[pos] = arr[pos-1]
+            pos -= 1
         
-        #sorted sublist
-        while position > 0 and arr[position-1] > currentValue:
-            arr[position] = arr[position-1]
-            position -= 1
-    
-        arr[position] = currentValue
+        # put the currentVal to its appropriate position
+        arr[pos] = currentVal
     return arr
 
-arr = [8,23,2,784,1,5] 
-print(insertion_sort(arr))
+
+arr = [1,4,2,3,6,7]
+print(insertionSort(arr))

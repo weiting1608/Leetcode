@@ -50,3 +50,38 @@ nums1 = [2,6,9,10,0,0,0,0,0]
 nums2 = [1,3,5,7,8]
 sol.merge(nums1,4,nums2,5)
 print(nums1)
+
+# Approach is similar to the Approach 2
+# but instead of using a nums1[:] = [], it uses the nums1 itself and deal with more complicated index here.
+# Thanks to Mr. Zhou
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i, j = 0, 0
+        while i < m+j and j < n:
+            if nums1[i] <= nums2[j]:
+                i += 1
+            else:
+                nums1[i+1:m+1+j] = nums1[i:m+j]
+                nums1[i] = nums2[j]
+                j += 1
+                i += 1
+                
+        while j < n:
+            nums1[m+j] = nums2[j]
+            j+=1
+
+        # no need in this case, cause the elements are still in nums1 and position has been changed in the first while loop.    
+        # while i < m+j:
+        #     nums1[m+i] = nums1[i]
+        #     i += 1
+                
+
+sol = Solution()
+nums1 = [1,2,4,5,6,0]
+nums2 = [3]
+sol.merge(nums1, 5, nums2, 1)
+print(nums1)
+

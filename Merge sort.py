@@ -1,8 +1,13 @@
 #using divide and conquer strategy
 #divide the whole list into small list until only element in that list
 #merge the small list level by level
+# recursively call merge sort
 
 def merge_sort(arr):
+    # base case 
+    # if len(arr) == 1: return arr (no use here, cause in the case of len(arr), arr is changed in-place and returned)
+    # if not using the same arr in the case fo len(arr) > 1, then base case is needed.
+
     if len(arr) > 1:
         mid = len(arr)//2
         lefthalf = arr[:mid]
