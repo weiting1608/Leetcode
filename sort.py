@@ -104,7 +104,8 @@ def partition(arr, low, high):
 
     return i+1
 
-    
+
+
 arr = [4,3,2,6,1,5,9,8]
 print(bubblesort(arr))
 print(selectionsort(arr))

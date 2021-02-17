@@ -33,6 +33,7 @@ class Solution():
         """
         HashMap
         """
+        # Approach 2: hashmap
         dicts = {}
         result = start = 0
         for i, value in enumerate(s):
@@ -51,6 +52,21 @@ class Solution():
             dicts[value] = i
             
         return result
+
+        # Approach 3: sliding window
+        if len(s) <= 1: return len(s)
+        charSet = set()
+        left, res = 0, 0
+        for right in range(len(s)):
+            while s[right] in charSet:
+                charSet.remove(s[left])
+                left += 1
+            charSet.add(s[right])
+            res = max(res, right - left + 1)
+            
+        return res
+        
+
 
 sol = Solution()
 print(sol.lengthOfLongestSubstring("abba"))

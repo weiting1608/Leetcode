@@ -4,13 +4,20 @@ class Solution:
         # Approach 1: Kadane's algorithm
         # Time complexity O(n), go through the array once.
         maxSum, curSum = nums[0], 0
-        for num in nums:
+        for i in range(1, len(nums)):
             if curSum < 0: 
                 curSum = 0
-            curSum += num
-            maxSum = max(maxSum, curSum)
+                start = i
+            curSum += nums[i]
+            if curSum > maxSum:
+                maxSum = curSum
+                end = i
+                
+        # print the maximum subarray
+        print(nums[start: end+1])
         
         return maxSum
+
 
         # Similar to Approach 1: dp
     def maxSubArray(self, nums: List[int]) -> int:

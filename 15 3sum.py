@@ -1,31 +1,32 @@
 class Solution:
     def threeSum(self, nums):
-    #     # Approach 1: two pointers and two sum of sorted array
-    #     self.res = []
+        # Approach 1: two pointers and two sum of sorted array
+        self.res = []
         
-    #     nums.sort()
+        nums.sort()
         
-    #     for i in range(len(nums)):
-    #         # sorted array, the nums after i are all greater than nums[i].
-    #         if nums[i] > 0: break
-    #         if i == 0 or nums[i-1] != nums[i]:
-    #             self.twoSum(nums, i)
-    #     return self.res
+        for i in range(len(nums)-2):
+            # sorted array, the nums after i are all greater than nums[i].
+            if nums[i] > 0: break
+            # skip the repetition of the same element, i == 0 is for dealing with i-1 out of index.
+            if i == 0 or nums[i-1] != nums[i]:
+                self.twoSum(nums, i)
+        return self.res
         
-    # def twoSum(self,nums, i):
-    #     lo = i+1
-    #     hi = len(nums)-1
+    def twoSum(self,nums, i):
+        lo = i+1
+        hi = len(nums)-1
         
-    #     while(lo < hi):
-    #         sum = nums[i] + nums[lo] + nums[hi]
-    #         if sum < 0 or (lo > i+1 and nums[lo] == nums[lo-1]):
-    #             lo += 1      
-    #         elif sum > 0 or (hi < len(nums)-1 and nums[hi] == nums[hi+1]):
-    #             hi -= 1
-    #         else:
-    #             self.res.append([nums[i], nums[lo], nums[hi]])
-    #             lo += 1
-    #             hi -= 1
+        while(lo < hi):
+            sum = nums[i] + nums[lo] + nums[hi]
+            if sum < 0 or (lo > i+1 and nums[lo] == nums[lo-1]):
+                lo += 1      
+            elif sum > 0 or (hi < len(nums)-1 and nums[hi] == nums[hi+1]):
+                hi -= 1
+            else:
+                self.res.append([nums[i], nums[lo], nums[hi]])
+                lo += 1
+                hi -= 1
 
 
         # Approach 2: hash table

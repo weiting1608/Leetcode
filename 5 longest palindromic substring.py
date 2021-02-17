@@ -18,6 +18,7 @@ class Solution:
 
 # sol = Solution()
 # print(sol.longestPalindrome("a"))
+
         # Approach 2: Expand Around Center
         if s == None or len(s) < 1:
             return ""
