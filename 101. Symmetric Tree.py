@@ -4,6 +4,9 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# time complexity: O(n). Because we traverse the entire input tree once. 
+# space complexity: O(n) from O(h).
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         if not root: return True

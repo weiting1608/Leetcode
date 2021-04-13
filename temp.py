@@ -1,11 +1,23 @@
-def compare(arr1, arr2):
-    return arr1 == arr2
-
-arr1 = [1,2,3]
-arr2 = [4,5,6]
-arr3 = [1,2,3]
-
-print(compare(arr1,arr2))
-print(compare(arr1,arr3))
-
-    
+def linkParent(node, par= None):
+            if node:
+                node.par = par
+                linkParent(node.left, node)
+                linkParent(node.right, node)
+                
+        linkParent(root)
+        
+        que = collections.deque([(target, 0)])
+        seen = {target}
+        
+        while que:
+            if que[0][1] == K:
+                return [node.val for node, step in que]
+            
+            node, step = que.popleft()
+            for nei in (node.left, node.right, node.par):
+                if nei not in seen:
+                    seen.add(nei)
+                    que.append((nei, step+1))
+                    
+        return []
+        

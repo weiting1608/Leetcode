@@ -19,14 +19,16 @@ class Solution:
         
         while(lo < hi):
             sum = nums[i] + nums[lo] + nums[hi]
-            if sum < 0 or (lo > i+1 and nums[lo] == nums[lo-1]):
+            if sum < 0:
                 lo += 1      
-            elif sum > 0 or (hi < len(nums)-1 and nums[hi] == nums[hi+1]):
+            elif sum > 0:
                 hi -= 1
             else:
                 self.res.append([nums[i], nums[lo], nums[hi]])
                 lo += 1
                 hi -= 1
+                # to remove the duplicates triplets
+                while lo < hi and nums[lo] == nums[lo-1]: lo += 1
 
 
         # Approach 2: hash table

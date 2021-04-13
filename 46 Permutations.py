@@ -1,18 +1,15 @@
 class Solution:
-    def permute(self, nums):
-        self.res = []
-        
-        def dfs(nums, temp):
-            if len(temp) == len(nums):
-                # avoid the following change steps to affect the result
-                self.res.append(temp[:]) # cann't be deep copy, but shallow copy
-            
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        def dfs(nums, stack):
+            if not nums:
+                res.append(stack)
             for i in range(len(nums)):
-                if nums[i] in temp:
-                    continue
-                temp.append(nums[i])
-                dfs(nums, temp)
-                temp.pop()
-                
-        dfs(nums,[])
-        return self.res
+                stack.push(nums[i])
+                newNums = nums[:i] + nums[i+1:]
+                print(newNums)
+                dfs(newNums, stack)
+                stack.pop()
+
+        dfs(nums, [])
